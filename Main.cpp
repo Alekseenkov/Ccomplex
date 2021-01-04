@@ -7,28 +7,39 @@ using namespace std;
 
 int main()
 {
-	Ccomplex a(5, 1);
-	Ccomplex b(2, 1);
-	Ccomplex с;
+	int real = 0;
+	int imag = 0;
+	cout << "Enter first complex number:\n"
+		<< "Enter real part->";
+	cin >> real;
+	cout << "Enter imag part->";
+	cin >> imag;
+	Ccomplex a(real, imag);
 
-	с = a / b;
+	cout << "Enter second complex number:\n"
+		<< "Enter real part->";
+	cin >> real;
+	cout << "Enter imag part->";
+	cin >> imag;
+	Ccomplex b(real, imag);
 
-	cout << с.real() <<"|" << с.imag()<< endl;
+
+	Ccomplex rez;
+	try
+	{
+		rez = a / b;
+		cout << '(' << a.real() << " + " << a.imag() << "*i)/" << '(' << b.real() << " + " << b.imag() << "*i) = "
+			<< rez.real() << " + " << rez.imag() << "*i" << endl;
+
+	}
+	catch (const std::exception& ex)
+	{
+		cout << ex.what();
+	}
 
 
+	cout << "(" << b.real() << " + " << b.imag() << "*i)*=" << '(' << a.real() << " + " << a.imag() << "*i) = ";
 	b *= a;
-	cout << b.real() << "|" << b.imag() << endl;
 
-	/// <summary>
-	/// ///////////////////
-	/// </summary>
-	/// <returns></returns>
-	complex<double> a1(5, 1);
-	complex<double> b1(2, 1);
-	complex<double> c1(0, 0);
-
-	c1 = a1 / b1;
-	cout << c1.real() << "|" << c1.imag() << endl;
-	b1 *= a1;
-	cout << b.real() << "|" << b.imag() << endl;
+	cout << b.real() << " + " << b.imag() << "*i" << endl;
 }
